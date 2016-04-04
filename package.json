@@ -1,0 +1,16 @@
+{
+  "name": "gulp-i18n-compile2",
+  "version": "1.0.0",
+  "description": "Compilation of gulp-18n-extract files into language files for aurelia-i18n.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Net at Work GmbH",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
+    "through2": "^2.0.1"
+  }
+}
