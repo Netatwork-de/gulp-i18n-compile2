@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Compilation of gulp-18n-extract files into language files for aurelia-i18n.",
   "main": "index.js",
+  "repository": {
+	  "type":"git",
+	  "url":"https://github.com/Netatwork-de/gulp-i18n-compile2.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
