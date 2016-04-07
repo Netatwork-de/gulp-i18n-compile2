@@ -22,7 +22,7 @@ module.exports = function(options) {
     
     let cwd = null;
     let fileName = null;
-    let firstCall = true;
+    let anyFileProcessed = false;
 	
 	function AddTranslation(languageContent, key, value, context) {
 		if(!value) return;
@@ -39,7 +39,7 @@ module.exports = function(options) {
 		}
 		
 		if(content[finalPathPart]) {
-			context.emit('warning', new PluginError('gulp-i18n-compile',  "'Duplicate key '" + key + "' found. Content has been overwritten."));			
+			context.emit('warning', new PluginError('gulp-i18n-compile2',  "'Duplicate key '" + key + "' found. Content has been overwritten."));			
 		}
 		
 		content[finalPathPart] = value;		
@@ -53,22 +53,22 @@ module.exports = function(options) {
 		}
 
 		if (file.isStream()) {
-			this.emit('error', new PluginError('gulp-i18n-compile',  'Streaming not supported'));
+			this.emit('error', new PluginError('gulp-i18n-compile2',  'Streaming not supported'));
 			cb();
 			return;
-		}
-        		
-		if(firstCall) { // only on first execution
-            firstCall = false;
-			cwd = file.cwd;					
-		}	 
+		} 
         
         let translations = JSON.parse(file.contents);
         if(!translations) {
-			this.emit('error', new PluginError('gulp-i18n-compile',  'Cannot read file ' + path.basename(file.path)));
+			this.emit('error', new PluginError('gulp-i18n-compile2',  'Cannot read file ' + path.basename(file.path)));
 			cb();
 			return;            
         }
+        		
+		if(!anyFileProcessed) { // only on first execution
+            anyFileProcessed = true;
+			cwd = file.cwd;					
+		}	
         
         for(let sourceFile in translations) {
 			var source = translations[sourceFile];
@@ -105,6 +105,13 @@ module.exports = function(options) {
 	}
 
 	function endStream(cb) {   
+		
+		if(!anyFileProcessed) { // only on first execution
+			this.emit('error', new PluginError('gulp-i18n-compile2',  'Pipeline is empty. No output has been created.'));
+			cb();
+			return;
+		}
+		
         this.push(createFile(defaultLanguageName,defaultLanguage));
 			     
 		for(let languageName in languages) {       
