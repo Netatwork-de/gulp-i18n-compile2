@@ -23,7 +23,7 @@ Setup a gulp task `i18n-compile`.
 
 ```js
 var gulp = require('gulp');
-var i1s8n_compile = require('gulp-i18n-compile2');
+var i18n_compile = require('gulp-i18n-compile2');
 
 var options = {
 	fileName: "translation.json",
