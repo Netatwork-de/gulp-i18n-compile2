@@ -25,7 +25,7 @@ module.exports = function(options) {
     let anyFileProcessed = false;
 	
 	function AddTranslation(languageContent, key, value, context) {
-		if(!value) return;
+		if(!value) value = " ";
 		
 		var content = languageContent;
 		let objectPath = key.split('.');
