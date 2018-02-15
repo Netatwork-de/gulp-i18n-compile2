@@ -1,12 +1,10 @@
 'use strict';
 
 var through = require('through2');
-var gutil = require('gulp-util');
 var path = require('path');
 var fs = require('fs');
-
-var PluginError = gutil.PluginError;
-var File = gutil.File;
+var PluginError = require("plugin-error");
+var File = require("vinyl");
 
 module.exports = function(options) {
 	
