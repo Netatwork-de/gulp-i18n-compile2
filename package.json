@@ -1,6 +1,6 @@
 {
   "name": "gulp-i18n-compile2",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Compilation of gulp-18n-extract files into language files for aurelia-i18n.",
   "main": "index.js",
   "repository": {
